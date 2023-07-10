@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "python-interfaces-poc"
+version = "0.1.0"
+description = ""
+authors = ["Aleksander Sil <a.sil@scanway.pl>"]
+readme = "README.md"
+packages = [{include = "poc"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "*"
+opencv-python = "^4.7"
+pyzmq = "^25.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+source_pub = "poc.services.source_pub:main"
+sink_sub = "poc.services.sink_sub:main"

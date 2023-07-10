@@ -1,0 +1,22 @@
+version: '3'
+services:
+  data_source:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - PUB_URI=tcp://*:5432
+    command: >
+      bash -c "poetry install && source_pub"
+  data_sink:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - SUB_URI=tcp://localhost:5432
+    command: >
+      bash -c "poetry install && sink_sub"
